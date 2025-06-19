@@ -1,5 +1,61 @@
 ---
-title: "Untitled"
+title: "A Beautiful Graphic"
+author: Junaid Yousuf
 format: html
+execute: 
+  echo: false
 ---
 
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+```{r}
+# Load necessary library
+library(tidyverse)
+
+# Use the diamonds dataset
+ggplot(diamonds, aes(x = carat, y = price, color = cut)) +
+  geom_point(alpha = 0.6, size = 1.5) +
+  scale_color_brewer(palette = "Set2") +
+  labs(
+    title = "Diamond Size vs. Price",
+    subtitle = "Larger diamonds generally cost more, with price variation across cuts",
+    caption = "Data source: ggplot2's diamonds dataset",
+    x = "Carat (Size of Diamond)",
+    y = "Price (USD)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(size = 12),
+    plot.caption = element_text(size = 10),
+    legend.position = "bottom"
+  )
+
+```
+
+```{r}
+# Load necessary library
+library(tidyverse)
+
+# Create a violin plot to show price distributions across cut categories
+ggplot(diamonds, aes(x = cut, y = price, fill = cut)) +
+  geom_violin(alpha = 0.8) +
+  scale_fill_brewer(palette = "Pastel1") +
+  labs(
+    title = "Price Distribution of Diamonds by Cut",
+    subtitle = "Higher-quality cuts show a wider spread in pricing",
+    caption = "Data source: ggplot2's diamonds dataset",
+    x = "Diamond Cut Quality",
+    y = "Price (USD)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(size = 12),
+    plot.caption = element_text(size = 10),
+    legend.position = "none"
+  )
+
+```
